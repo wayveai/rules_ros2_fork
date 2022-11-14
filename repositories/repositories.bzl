@@ -56,11 +56,27 @@ def ros2_repositories():
 
     maybe(
         http_archive,
+        name = "pybind11",
+        build_file = "@com_github_mvukov_rules_ros2//repositories:pybind11.BUILD.bazel",
+        sha256 = "c6160321dc98e6e1184cc791fbeadd2907bb4a0ce0e447f2ea4ff8ab56550913",
+        strip_prefix = "pybind11-2.9.1",
+        urls = ["https://github.com/pybind/pybind11/archive/refs/tags/v2.9.1.tar.gz"],
+    )
+
+    http_archive(
+        name = "rules_foreign_cc",
+        sha256 = "2a4d07cd64b0719b39a7c12218a3e507672b82a97b98c6a89d38565894cf7c51",
+        strip_prefix = "rules_foreign_cc-0.9.0",
+        url = "https://github.com/bazelbuild/rules_foreign_cc/archive/refs/tags/0.9.0.tar.gz",
+    )
+
+    maybe(
+        http_archive,
         name = "ros2",
         build_file = "@com_github_mvukov_rules_ros2//repositories:ros2.BUILD.bazel",
-        sha256 = "86039b6c4cd7953edaaf1ef96eafd9770dd7cd2750379d2507b62ca195bbe76e",
+        sha256 = "89b68b0ffb84068bc19c1103e658d90b05c2276c8f07d504301bed02bac8bd86",
         strip_prefix = "ros2-release-humble-20220523",
-        urls = ["https://github.com/ros2/ros2/archive/refs/tags/release-humble-20220523.zip"],
+        urls = ["https://github.com/ros2/ros2/archive/refs/tags/release-humble-20220523.tar.gz"],
     )
 
     ros2_repositories_impl()
